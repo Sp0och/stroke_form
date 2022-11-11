@@ -128,13 +128,13 @@ const Form = () => {
 
   async function submit(e) {
     e.preventDefault();
-    const webHookURL = "https://hooks.slack.com/services/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";
+    const webHookURL = process.env.REACT_APP_SLACK_URL;
     const data = {
       text: `Data Submission:
       \nEmail: ${email}
       \nFood: ${food}
       \nAge: ${age}
-      \nAnimals: ${animals.filter((animal) => animal.checked).map((animal) => animal.name)}
+      \nAnimals: ${animals.map((animal) => (animal.checked ? animal.name + "true" : animal.name + "false"))}
       \nMessi: ${messi}
       \nCage: ${cage}
       \nSlider: ${slider}`,
@@ -148,9 +148,22 @@ const Form = () => {
         },
       ],
     });
-
+    console.log("sent request");
     if (res.status === 200) {
       alert("Success!");
+      setAge("");
+      setAnimals([
+        { name: "Dogs", checked: false },
+        { name: "Cats", checked: false },
+        { name: "Birds", checked: false },
+        { name: "Fish", checked: false },
+        { name: "Reptiles", checked: false },
+      ]);
+      setCage("");
+      setEmail("");
+      setFood("");
+      setMessi("");
+      setSlider(5);
     } else {
       alert("message failed to send");
     }
