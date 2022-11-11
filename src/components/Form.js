@@ -114,7 +114,7 @@ const SubmitButton = styled.button`
 const Form = () => {
   const [email, setEmail] = useState("");
   const [food, setFood] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("");
   const [animals, setAnimals] = useState([
     { name: "Dogs", checked: false },
     { name: "Cats", checked: false },
