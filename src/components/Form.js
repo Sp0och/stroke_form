@@ -122,9 +122,9 @@ const Form = () => {
     { name: "Fish", checked: false },
     { name: "Reptiles", checked: false },
   ]);
-  const [messi, setMessi] = useState(0);
+  const [messi, setMessi] = useState("");
   const [cage, setCage] = useState("");
-  const [slider, setSlider] = useState(0);
+  const [slider, setSlider] = useState(5);
 
   async function submit(e) {
     e.preventDefault();
